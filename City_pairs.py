@@ -13,10 +13,9 @@ api_key = api_secret['AVIATION_STACK_SECRET']
 
 base_url = 'http://api.aviationstack.com/v1/flights'
 
-params = dict(access_key = api_key, dep_iata = 'DFW', ar_iata = 'MSP', status = 'active', airline_icao = 'aal')
+params = dict(access_key = api_key, arr_iata = 'msp', airline_icao = 'aal')
 
-# response.json()
-
+response = requests.get(base_url, params)
 # df = pd.DataFrame.from_dict(response.json()['data'])
 
 # df.to_csv('test.csv')
@@ -25,3 +24,4 @@ response.json().keys()
 
 t2 = response.json()['data']
 df = pd.json_normalize(t2)
+df.to_csv('test.csv')
